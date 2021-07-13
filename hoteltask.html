@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hotel task</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script>
+
+            function onRegister(){
+                var customername= document.getElementById("cusname").value;
+                var checkindate = document.getElementById("checkDate").value;
+                var Totaldays= document.getElementById("totdays").value;
+                var Totalpersons= document.getElementById("totalpersons").value;
+                var advanc= document.getElementById("advrs").value;
+                var customername1=document.getElementById("cuna");
+                var checkindate1 = document.getElementById("cdate");
+                var Totaldays1= document.getElementById("tod");
+                var Totalpersons1= document.getElementById("top");
+                var roomType= document.getElementById("rt");
+                var amenities= document.getElementById("am");
+                var advanceAmount= document.getElementById("aa");
+                var balanceAmount= document.getElementById("ba");
+                var RT="";
+                var amen="";
+                
+                customername1.innerHTML=customername;
+                checkindate1.innerHTML=checkindate;
+                Totaldays1.innerHTML=Totaldays;
+                Totalpersons1.innerHTML=Totalpersons;
+                var total=0;
+                if(document.getElementById("deluxe").checked){
+
+                    var deluxeRoom=2500;
+                    total+=deluxeRoom;
+                    RT= document.getElementById("deluxe").value;
+
+                }
+
+                if(document.getElementById("suite").checked){
+
+                    var suiteRoom=4000;
+                    total+=suiteRoom;
+                    RT= document.getElementById("suite").value;
+                }
+
+                if(document.getElementById("ac").checked){
+                    var acAmenity= 1000;
+                    total += acAmenity;
+                    amen+= document.getElementById("ac").value + "<br>";
+                }
+
+                if(document.getElementById("locker").checked){
+                    var locker= 300;
+                    total += locker;
+                    amen+= document.getElementById("locker").value+ "<br>";
+                }
+                roomType.innerHTML= RT;
+                amenities.innerHTML= amen;
+                total= total*Totaldays;
+                var Total=0;
+                if(Totalpersons<3){
+                    Total= total;
+
+                }
+                else{
+                    Total= total+(1000*(Totalpersons-2));
+                }
+                var baln=0;
+
+                if(advanc==0){
+                    alert("advance is mandatory");
+                }
+                else{
+                    baln= Total-advanc;
+                    advanceAmount.innerHTML=advanc;
+
+                }
+                balanceAmount.innerHTML= baln;
+
+
+
+
+
+
+
+
+
+               
+                
+
+
+
+
+
+            }
+         
+        </script>
+    </head>
+    <body class="container-fluid">
+        <img src="" width="100%" height="100"> 
+        <div class="accordion" id="main">
+            <div class="card-deck">
+
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn bg-danger btn-block" data-target="#customerdata" data-toggle="collapse"> Customer Info</button>
+                    </div>
+
+                    <div class="collapse show" data-parent="#main" id="customerdata"> 
+
+                        <div class="card-body" >
+                            <div class="row form-group">
+                                <div class="col-4">
+                                    <div class="d-flex">Customer name</div>
+        
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="cusname">
+        
+                                </div>
+        
+                            </div>
+        
+        
+                            <div class="row form-group">
+                                <div class="col-4">
+                                    <div class="d-flex">Check in date</div>
+        
+                                </div>
+                                <div class="col-6">
+                                    <input type="date" class="form-control" id="checkDate" name="dat">
+        
+                                </div>
+        
+                            </div>
+        
+        
+                            <div class="row form-group">
+                                <div class="col-4">
+                                    <div class="d-flex">Total no of days</div>
+        
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control" id="totdays">
+        
+                                </div>
+        
+                            </div>
+        
+                            <div class="row form-group">
+                                <div class="col-4">
+                                    <div class="d-flex">Total no of persons</div>
+        
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control" id="totalpersons">
+        
+                                </div>
+        
+                            </div>
+
+                   
+
+                        </div>
+                    </div>
+               </div>
+                    
+
+            </div>
+
+
+
+
+            <div class="card">
+                <div class="card-header">
+                    <button class="btn bg-danger btn-block" data-target="#customerdata" data-toggle="collapse"> Customer Info</button>
+                </div>
+
+                <div class="collapse show" data-parent="#main" id="customerdata"> 
+
+                    <div class="card-body" >
+                        <div class="card-deck">
+                            <div class="card">
+                                <div class="card-header">
+                                    <img src=" " width="200" height="200">
+
+                                </div>
+                                <div class="card-footer">
+                                    <input type="radio" value="deluxe" name="room" id="deluxe" > Deluxe room
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <img src=" " width="200" height="200">
+
+                                </div>
+                                <div class="card-footer">
+                                    <input type="radio" value="suite" name="room" id="suite"> Suite room
+
+                                </div>
+
+                            </div>
+
+                        </div>
+               
+
+                    </div>
+                </div>
+           </div>
+
+
+           <div class="card">
+               <div class="card-header">
+                   <button class="btn btn-danger btn-block" data-toggle="collapse" data-target="#selectamen">Select Amenities</button>
+
+               </div>
+
+               <div class="collapse-show" data-parent="#main" id="selectamen"> 
+                    <div class="card-deck">
+                        <div class="card">
+                            <div class="card-header">
+                                <img src="" width="200" height="200">
+
+                            </div>
+                            
+
+                            <div class="card-footer">
+                                
+                                    <input type="checkbox" name="amenity" value="A/C" id="ac"> A/C 
+
+                            
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-header">
+                                <img src="" width="200" height="200">
+
+                            </div>
+                            
+
+                            <div class="card-footer">
+                                <input type="checkbox"name="amenity" value="locker" id="locker"> Locker
+                                
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+               
+
+                </div>
+
+            </div>
+
+           </div>
+                
+
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <button class="btn btn-block btn-danger" data-toggle="collapse" data-target="#adv">Advance Amount</button>
+
+                </div>
+                <div class="collapse-show" id="adv" data-parent="#main"> 
+                <div class="card-body" >
+                    <div class="d-flex align-items-center justify-content-center">
+                        <label class="d-flex p-2 text-center" >Advance Amount  </label>
+                        <div class="d-flex">  </div>
+
+                        <input class="d-flex" type="number" id="advrs" >
+
+                    </div>
+                    
+
+                </div>
+                </div>
+
+            </div>
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center p-5">
+            <button class="btn btn-danger" data-toggle="modal" data-target="#reg" onclick="onRegister()">Register</button>
+        </div>
+
+        <div class="modal fade" id="reg">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Details</h3>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <table class="table table-hover">
+
+                            <tr>
+                                <td>customer name </td>
+                                <td id="cuna"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Check in date </td>
+                                <td id="cdate"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Total no of days </td>
+                                <td id="tod"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Total no of persons </td>
+                                <td id="top"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Room type </td>
+                                <td id="rt"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Amenities </td>
+                                <td id="am"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Advance amount </td>
+                                <td id="aa"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Balance amount </td>
+                                <td id="ba"></td>
+                            </tr>
+                        
+                        
+
+                        </table>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn  bg-info" data-dismiss="modal">ok</button>
+                    
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        
+
+
+      
+    </body>
+</html>
